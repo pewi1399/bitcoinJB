@@ -124,9 +124,9 @@ showInfo  = function(data, tabletop){
   */
   var dataNew = data
 
-  dataNew = JSON.parse(JSON.stringify(dataNew).split('Bitcoin rate in USD 30 days from now?').join('ClosePrice'));
+  dataNew = JSON.parse(JSON.stringify(dataNew).split('Price').join('ClosePrice'));
   dataNew = JSON.parse(JSON.stringify(dataNew).split('Timestamp').join('Date'));
-  dataNew = JSON.parse(JSON.stringify(dataNew).split('Name (optional)').join('Name'));
+  dataNew = JSON.parse(JSON.stringify(dataNew).split('Name').join('Name'));
   
   dataNew.forEach(function(d){ 
       d.Date = d.Date.split(' ')[0]
