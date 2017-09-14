@@ -274,13 +274,13 @@ function starter(){
 ////////////////////////////////////////////////////////////////////////////////
 svg.append("g")
     .attr("class", "infowin")
-    .attr("transform", "translate(70, 40)")
+    .attr("transform", "translate(70, 20)")
     .append("text")
     .attr("id", "dateText");
 
 svg.append("g")
     .attr("class", "infowin")
-    .attr("transform", "translate(200, 40)")
+    .attr("transform", "translate(200, 20)")
     .append("text")
     .attr("id","rateText"); 
 
