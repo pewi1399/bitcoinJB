@@ -2,7 +2,7 @@ var margin = {top: 33, left: 50, right: 30, bottom: 75},
     width  = 960 - margin.left - margin.right,
     height = 650  - margin.top  - margin.bottom;
 
-var forecast_horizon = 30
+var forecast_horizon = 20
 
 // get date
 var parseTime = d3.timeParse("%Y-%m-%d");  
@@ -150,7 +150,7 @@ showInfo  = function(data, tabletop){
   y.domain(
     [
     0, 
-    d3.max(dataNew, function(d) { return Number(d.ClosePrice); })
+    d3.max([5000, d3.max(dataNew, function(d) { return Number(d.ClosePrice); })])    
     ]
     );
   
@@ -228,6 +228,15 @@ svg.append("g")
       .attr("fill", "steelblue")
       .attr("cx", function(d) { return d.data[0]; })
       .attr("cy", function(d) { return d.data[1]; });
+      
+      
+  var mean = Math.round(d3.mean(dataNew, function(d){return d.ClosePrice;}))
+  
+    cell.append("circle")
+      .attr("r", 4)
+      .attr("fill", "red")
+      .attr("cx", 870)
+      .attr("cy", y(mean));
       
   cell.append("path")
     .attr("stroke", "none")
