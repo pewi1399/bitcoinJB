@@ -36,7 +36,7 @@ g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.
 x.domain(d3.extent(data, function(d) { return parseTime(d.Date); }));
 y.domain(
   [
-  0, 
+  1100, 
   d3.max(data, function(d) { return d.ClosePrice; })
   ]
   );
@@ -72,7 +72,7 @@ g.selectAll(".watermark")
   .attr("x", width/2.5)
   .attr("font-size", "160")
   .attr("fill", "whitesmoke")
-  .text(function(d) { return '\uf15a' }); 
+  //.text(function(d) { return '\uf006' }); 
 
 g.selectAll(".horizontalGrid").data(y.ticks(5)).enter()
     .append("line")
@@ -130,8 +130,8 @@ showInfo  = function(data, tabletop){
   
   dataNew.forEach(function(d){ 
       d.Date = d.Date.split(' ')[0]
-      if(d.ClosePrice >= 40000){
-        d.ClosePrice = 40000
+      if(d.ClosePrice >= 5000){
+        d.ClosePrice = 5000
       }
       if(d.ClosePrice <= 0)
        d.ClosePrice = 0
@@ -149,8 +149,8 @@ showInfo  = function(data, tabletop){
   
   y.domain(
     [
-    0, 
-    d3.max([5000, d3.max(dataNew, function(d) { return Number(d.ClosePrice); })])    
+    d3.min([1100, d3.max(dataNew, function(d) { return Number(d.ClosePrice); })]), 
+    d3.max([1400, d3.max(dataNew, function(d) { return Number(d.ClosePrice); })])    
     ]
     );
   
